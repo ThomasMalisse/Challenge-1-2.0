@@ -1,0 +1,183 @@
+:root {
+  --paper-bg: #f6efe1; /* warm paper */
+  --paper-edge: #e7dcc6;
+  --text-color: #2b2215;
+  --accent: #7b5a3c; /* brown accent */
+}
+
+/* Page */
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background-color: var(--paper-bg);
+  margin: 0;
+  padding: 60px 20px;
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image:
+    radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.6), transparent 40%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.02), transparent 40%);
+  background-size:
+    120px 120px,
+    100% 100px,
+    100% 100%;
+}
+
+/* Faint paper stain in the background */
+body::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(120, 90, 50, 0.03), transparent 8%),
+    radial-gradient(circle at 80% 70%, rgba(120, 90, 50, 0.02), transparent 10%);
+  pointer-events: none;
+}
+
+.container {
+  max-width: 860px;
+  margin: 40px auto;
+  background: linear-gradient(180deg, #fffdf6 0%, #f9f1de 100%);
+  padding: 48px 56px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.12),
+    inset 0 0 0 6px rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  font-size: 44px;
+  margin: 0 0 28px 0;
+  letter-spacing: 1px;
+  font-variant: small-caps;
+  color: var(--text-color);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+  padding-bottom: 12px;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.12);
+}
+
+/* Articles */
+.article {
+  margin-bottom: 34px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.article a {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(123, 90, 60, 0.25);
+}
+
+.article a:hover {
+  text-decoration: none;
+  color: darken(var(--accent), 10%);
+  text-decoration: underline;
+}
+
+.date {
+  font-size: 14px;
+  color: #6b5d4d;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+.content {
+  font-size: 18.5px;
+  line-height: 1.85;
+  margin-top: 20px;
+  color: var(--text-color);
+  text-align: justify;
+}
+
+/* Classic drop cap */
+.content::first-letter,
+.article .content::first-letter {
+  float: left;
+  font-size: 3.6rem;
+  line-height: 0.8;
+  margin-right: 12px;
+  margin-top: 6px;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: Georgia, serif;
+}
+
+/* Back link styled as an antique button */
+.back {
+  display: inline-block;
+  margin-top: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--text-color);
+  border: 1px solid rgba(123, 90, 60, 0.25);
+  padding: 8px 14px;
+  border-radius: 4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.6),
+    rgba(0, 0, 0, 0.02)
+  );
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.back:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* Small print-friendly adjustments */
+@media print {
+  body {
+    background: #fff;
+    padding: 0;
+  }
+  .container {
+    box-shadow: none;
+    border: none;
+    background: #fff;
+  }
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+  .content {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .container {
+    padding: 24px;
+    margin: 20px;
+  }
+  h1 {
+    font-size: 30px;
+  }
+  .article a {
+    font-size: 20px;
+  }
+  .content {
+    font-size: 16px;
+  }
+  .content::first-letter {
+    font-size: 2.6rem;
+  }
+}
+
+/* Utility: ensure links inside content are readable */
+.content a {
+  color: var(--accent);
+  text-decoration: underline dotted;
+}

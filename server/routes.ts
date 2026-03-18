@@ -1,16 +1,18 @@
 import express, { Request, Response } from "express";
 import path from "path";
 import news from "./data/news.json";
+import { getAllNews } from "./services/newsService";
 
 const router = express.Router();
 
 // index
-router.get("/", (req: Request, res: Response) => {
+router.get("/", async (req: Request, res: Response) => {
+  const news = await getAllNews();
   res.render("index", { news });
 });
 
 // detail
-router.get("/news/:slug", (req: Request, res: Response) => {
+router.get("/news/:slug", async (req: Request, res: Response) => {
   const slug = req.params.slug;
 
   const article = news.find((n) => n.slug === slug);

@@ -1,6 +1,8 @@
 import express, { Application, Request, Response } from "express";
 import path from "path";
 import routes from "./routes";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app: Application = express();
 const PORT: number = parseInt(<string>process.env.PORT, 10) || 3000;

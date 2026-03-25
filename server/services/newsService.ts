@@ -13,7 +13,14 @@ export interface News {
 
 // Alle nieuwsartikelen ophalen
 export async function getAllNews(): Promise<News[]> {
-  const data: News[] = await sql`select * from news`;
+  const data: News[] = await sql`
+   SELECT news.title, news.content
+  FROM categories
+  JOIN news_categories ON categories.id = news_categories.category_id
+  JOIN news ON news_categories.news_id = news.id
+  WHERE categories.id = 1
+`;
+  console.log(data);
   return data;
 }
 
